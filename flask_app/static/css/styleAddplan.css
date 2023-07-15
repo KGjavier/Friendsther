@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.head{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+label {
+    display: inline-block;
+    width: 200px;
+}
+
+input[type="submit"] {
+    background-color: gray;
+    color: #fff;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 200px;
+    margin-left: 170px;
+}
+
+input[type="text"], select {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 300px;
+    font-size: medium;
+    
+}
+
+div{
+    margin: 10px 0 20px 0;
+}
+
+.ninja_container{
+    width: 500px;
+    height: 450px;
+    background-color: #73aa75;
+    margin:auto;
+    margin-top: 50px;
+    border: none;
+    border-radius: 4px;
+}
+
+form{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border:2px solid #4CAF50;
+    border-radius: 20px;
+    padding: 30px;
+    
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.home{
+    margin-right: 20%;
+}
+
+.user-details p {
+    margin: 20px 0;
+}
+
+.mainbutton {
+    background-color: #4CAF50;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100px;
+    margin-left: 70%;
+}
+
+.mainbutton2 {
+    background-color: #4CAF50;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100px;
+    margin-left: 10px;
+}
+
+.container_button{
+    display: flex;
+}
+
+ul li{
+    list-style: none;
+    margin-left: 28%;
+}
