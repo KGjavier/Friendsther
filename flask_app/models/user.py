@@ -43,7 +43,6 @@ class User:
             is_valid = False
         return is_valid
     
-
     #------------------------------------------------------------------------------------
     #SAVE
     @classmethod

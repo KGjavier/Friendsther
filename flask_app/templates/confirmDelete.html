@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleConfirmDelete.css') }}">
+    <title>Confirm Deletion</title>
+</head>
+<body>
+    <div class="main__container">
+        <p>Are you sure you want to delete the following trip?</p>
+        <p><strong>Trip Destination:</strong> {{ trip.destination }}</p>
+        <p><strong>Trip Description:</strong> {{ trip.description }}</p>
+        <div class="sub__container">
+            <form method="POST">
+                <input type="submit" value="Delete">
+            </form>
+            <a href="/travels">Cancel</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleMyTravel.css') }}">
+    <title>Friendsther</title>
+</head>
+<body>
+    <nav>
+        <h1><span class="logo">Friendsther</span></h1>
+        <ul class="navbar">
+            <li><a class="mainbutton" href="/travels">My Travel</a></li>
+            <li><a class="mainbutton" href="/show">Create Travel</a></li>
+            <li><a class="mainbutton" href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="main__container">
+        <h3>Time to join others trip {{user.name}}!</h3>
+        <h4>Others Trip Schedules</h4>
+            
+            {% for trip in trips %}
+            <a class="destination__link" href="/travels/destination/{{ trip.id }}">
+                <div class="sub__container">                
+                    <p class="trip__creator">{{ trip.creator_name }}</p>
+                    <p class="destination">{{ trip.destination }}</p>
+                    <div class="date">
+                        <span class="dates">Start Date:</span> {{ trip.travel_date_from .strftime('%B %d, %Y')  }}  |  
+                        <span class="dates">End Date:</span> {{ trip.travel_date_to .strftime('%B %d, %Y')  }}
+                    </div>
+                    <p>Description: {{ trip.description }}</p>
+                    <p>
+                    <form action="/join/{{ trip.id }}" method="POST">
+                        <input type="hidden" name="_method" value="POST">
+                        <input type="hidden" name="trip_id" value="{{ trip.id }}"> 
+                        <button type="submit" class="join__button">Join</button>
+                    </form>
+                </div>
+            </a>
+            {% endfor %}
+    </div>
+</body>
+</html>

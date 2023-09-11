@@ -29,23 +29,26 @@
             </ul>
             {% endif %}
             {% endwith %}
-            <form method="post" action="/add">
+            <form method="post" action="/update_trip/{{ trip.id }}">
                 <div>
-                    
-                    <input type="text" name="destination" id="destination" placeholder="Destination">
+                    <label for="destination">Destination:</label>
+                    <input type="text" name="destination"  value="{{ trip.destination }}">
                 </div>
                 <div>
                     <label for="travel_date_from">Travel Date From:</label>
-                    <input type="date" name="travel_date_from" id="travel_date_from">
+                    <input type="date" name="travel_date_from"  value="{{ trip.travel_date_from }}">
                 </div>
                 <div>
                     <label for="travel_date_to">Travel Date To:</label>
-                    <input type="date" name="travel_date_to" id="travel_date_to">
+                    <input type="date" name="travel_date_to"  value="{{ trip.travel_date_to }}">
                 </div>
                 <div>
-                    <textarea name="description" id="description" placeholder="Plans/ Description / Please add you contact here" rows="8"></textarea>
+                    <textarea name="description"  placeholder="Plans/ Description / Please add you contact here" rows="8">{{ trip.description }}</textarea>
                 </div>
-                <button type="submit" class="add__button">Add</button>
+                <div>
+                <input type="hidden" name="trip_id" value="{{ trip.id }}">
+                </div>
+                <button type="submit" class="add__button">Save</button>
             </form>
         </div>
     </div>

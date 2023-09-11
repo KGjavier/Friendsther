@@ -50,7 +50,7 @@ class Trip:
         attendees = [User(result) for result in results]
         return attendees
     
-    #GET USER TRIPS USED IN /TRAVEL--------------------------------------------------------------------------------
+    #GET USER TRIPS--- USED IN /TRAVEL--------------------------------------------------------------------------------
     @classmethod
     def get_user_trips(cls, user_id):
         query = "SELECT trips.id, trips.destination, trips.description, trips.travel_date_from, trips.travel_date_to, users.name AS creator_name FROM trips INNER JOIN users ON trips.creator_id = users.id WHERE trips.creator_id = %(user_id)s OR trips.id in (SELECT trip_id from usertrips where user_id =  %(user_id)s);"
@@ -58,15 +58,13 @@ class Trip:
         trips = [Trip(trip_data) for trip_data in trips_data]
         return trips
     
-    
-    #GET OTHER USERS TRIPS USED IN /TRAVEL-------------------------------------------------------------------------
+    #GET OTHER USERS TRIPS--- USED IN /TRAVEL-------------------------------------------------------------------------
     @classmethod
     def get_other_user_trips(cls, user_id):
         query = "SELECT trips.id, trips.destination, trips.description, trips.travel_date_from, trips.travel_date_to, users.name AS creator_name FROM trips INNER JOIN users ON trips.creator_id = users.id WHERE trips.creator_id != %(user_id)s AND trips.id not in (SELECT trip_id from usertrips where user_id =  %(user_id)s);; "
         other_trips_data = connectToMySQL('belt').query_db(query, {'user_id': user_id})
         other_trips = [Trip(trip_data) for trip_data in other_trips_data]
         return other_trips
-    
     
     #JOIN TRIP--------------------------------------------------------------------------------
     @classmethod
@@ -88,3 +86,52 @@ class Trip:
         query = "SELECT trips.*, users.name AS creator_name FROM trips JOIN users ON trips.creator_id = users.id WHERE trips.id = %(trip_id)s;"
         result = connectToMySQL('belt').query_db(query, {'trip_id': trip_id})
         return Trip(result[0]) if result else None
+    
+    # DELETE TRIP BY ID--------------------------------------------------------------------------
+    @classmethod
+    def delete_trip(cls, trip_id):
+        # First, check if the trip exists
+        trip = cls.get_one(trip_id)
+        if not trip:
+            flash("Trip not found.")
+            return False
+
+        # Delete the trip
+        query = "DELETE FROM trips WHERE id = %(trip_id)s;"
+        result = connectToMySQL('belt').query_db(query, {'trip_id': trip_id})
+
+        print(result)
+        if result is None:
+            flash(f"Trip to {trip.destination} deleted successfully.")
+            return True
+        else:
+            flash(f"Failed to delete trip to {trip.destination}.")
+            return False
+    
+    # UPDATE TRIP BY ID--------------------------------------------------------------------------
+    @classmethod
+    def update_trip(cls, data):
+        # First, check if the trip exists
+        trip = cls.get_one(data['id'])
+        if not trip:
+            flash("Trip not found.")
+            return False
+
+        # Update the trip
+        query = """
+            UPDATE trips
+            SET destination = %(destination)s,
+                description = %(description)s,
+                travel_date_from = %(travel_date_from)s,
+                travel_date_to = %(travel_date_to)s,
+                updated_at = NOW()
+            WHERE id = %(id)s;
+        """
+        result = connectToMySQL('belt').query_db(query, data)
+
+        if result is None:
+            flash(f"Trip to {data['destination']} updated successfully.")
+            return True
+        else:
+            flash(f"Failed to update trip to {data['destination']}.")
+            return False

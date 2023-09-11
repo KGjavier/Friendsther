@@ -19,7 +19,13 @@
     </nav>
     <div class="main__container">
         <div class="sub__container">
-            <p class="destination">{{trip.destination}}</p>
+            <div class="sub__container1">
+                <p class="destination">{{trip.destination}}</p>
+                <div>
+                    <a href="/trips/edit/{{ trip.id }}"><img src="{{ url_for('static', filename='img/edit.png') }}" class="edit__button" alt="edit"></a>
+                    <a href="/trips/delete/{{ trip.id }}"><img src="{{ url_for('static', filename='img/delete.png') }}" class="delete__button" alt="delete"></a>
+                </div>
+            </div>
             <p>Planned By: {{ trip.creator_name }}</p>
             <p>Description : {{trip.description}}</p>
             <p>Travel Date From: {{ trip.travel_date_from.strftime('%B %d, %Y') }}</p>

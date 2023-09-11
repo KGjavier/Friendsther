@@ -1,74 +1,174 @@
-body{
-    margin: none;
-    padding: none;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-.main{
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-around;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@1,600&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@1,600&family=Montserrat:wght@600&family=Roboto:wght@300&display=swap');
 
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: 		#fdf9f9;
+}
+
+.main{
+    padding: none;
+    display: flex;
+    justify-content: center;
+    margin: none;
+}
+
+.slogan{
+    text-align: center;
+    margin: 20px;
+    font-weight: 700;
+    font-size: large;
+    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Courier, monospace;
+    color: #1DB954;
+}
+
+.login__Image{
+    height: 100vh;
+    width: 100%;
+    position:absolute;
+    margin:0px 0 0 0px;
+    padding: none;
+    z-index: -1;
+}
+
+.background{
+    height: 100vh;
+    width: 100%;
+    position:absolute;
+    margin:  -100px 0 0 -0px;
+    padding: none;
+    z-index: -1;
+    opacity: 0.9;
+    background: linear-gradient(to top, #1DB954 2%,black );
+}
+
+.flash-messages{
+    color:#1DB954;
+    margin-left: 30PX;
+    font-weight: bold;
 }
 
 label{
     display:inline-block;
-    width: 150px;
-    color:#011f02 ;
-    margin-bottom: 20px;
-    font-size: large;
+    width: 80px;
+    color:#1DB954 ;
+    margin-bottom: 10px;
+    font-size: 13px;
     font-weight: bold;
-    
-
 }
 
-.left_container,
-.right_container{
-    margin:10px;
-    background-color:#4CAF50;
-    padding:30px;
-    border: 1px solid #4CAF50;
-    border-radius: 10px;
-    box-shadow: 5px 10px #979696;
+span{
+    color: #1DB954;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    text-shadow:0px 2px 2px  white;
 }
 
-.right_container:hover{
-    box-shadow: 5px 10px #5460a3;
+.right__container{
+    background-color:#f6f6f6;
+    padding: 20px;
+    padding-bottom:20px;
+    font-size: 12px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 10px 10px 10px rgb(109, 109, 109);
+    height: 370px;
+    width: 250px;
+    margin-top: 30px;
+    opacity: 0.9;
+}
 
+.title{
+    margin: 0;
+    padding-top:40px; 
 }
-.left_container:hover{
-    box-shadow: 5px 10px #5460a3;
+
+.left__container{
+    font-size: 12px;
+    background-color:#151515;
+    padding:20px;
+    height: 370px;
+    width: 250px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 10px 10px 10px #151515;
+    margin-top: 30px;
 }
-.left_container{
-    margin-right: 100px;
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1{
-    color:black;
+    color: #1DB954;;
     text-align: center;
 }
 
-input{
+.input__login{
+    display: grid;
+    justify-content: center;
+}
+
+.left__container input{
     border-radius: 2px;
-    font-size: large;
+    margin-bottom: 10px;
+    background-color:#f6f6f6;
+    font-size: 10px;
     outline:none;
     border: none;
     padding: 5px;
 }
 
-button{
-    padding: 5px 20px 5px 20px;
-    font-size: medium;
-    border-radius: 5px;
-    background-color:#1d4b1f ;
-    color: white;
+.right__container input{
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #1DB954;;
+    font-size: 10px;
+    color: black;
+    outline:none;
     border: none;
-    margin-left: 160px;
-    margin-top: 30px;
+    padding: 5px;
+}
+
+input::placeholder{
+    color: black;
+    opacity: 0.5;
+}
+
+button{
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 10%;
+    display: block;
+    width: 150px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: black;
+    border: solid 1px transparent;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+button:hover{
+    background-color: 	#1db954;
+    border-color: #fff;
+    transition: all .2s ease-in-out;
 }
 
 ul li{
     list-style: none;
+}
+
+@media screen and (max-width: 650px) {
+    input{
+        width: 135px;
+    }
 }
